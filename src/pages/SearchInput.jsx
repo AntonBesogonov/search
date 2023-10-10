@@ -1,21 +1,20 @@
 import { useEffect, useState } from "react";
 import axios from 'axios';
-import style from '../style/MainPage.module.css';
-
+import '../style/MainPage.scss';
+import searchIcon from '../icon/iconSearch.svg'
+import clearIcon from '../icon/inputClose.svg'
 
 export function PeopleSearch() {
+
 	const [value, setValue] = useState('')
 	const [results, setResults] = useState([])
-	const [dropdown, setDropdown] = useState(false)
-	const { drop, inputSearch } = style
 
 	useEffect(() => {
 		if (value) {
-			searchPeople(value).then(() => setDropdown(true))
+			searchPeople(value)
 		} else {
 			setResults([])
 		}
-
 	}, [value])
 
 	async function searchPeople(search) {
@@ -27,7 +26,6 @@ export function PeopleSearch() {
 			})
 			setResults(res.data.results)
 		}
-
 	}
 
 	function changeHandler(event) {
@@ -35,9 +33,6 @@ export function PeopleSearch() {
 	}
 
 	function renderDropdown() {
-		if (results.length === 0 && value) {
-			return <p>Нет результатов по вашему запросу</p>
-		}
 		return results.map(people => (
 			<li
 				key={people.url}
@@ -47,17 +42,24 @@ export function PeopleSearch() {
 		))
 	}
 
+	function inputClear() {
+		if (value) {
+			setValue('')
+			setResults([])
+		}
+	};
 
 	return (
 		<div>
+			<span className="icon search"><img src={searchIcon} onClick={searchPeople} /></span>
 			<input
-				className={inputSearch}
+				className="inputSearch"
 				onChange={changeHandler}
 				value={value}
-				placeholder="Search for people"
+				placeholder="search for people"
 			/>
-
-			{dropdown && <ul className={drop}>
+			<span className="icon clear">{value ? <img style={{ opacity: '0.3' }} src={clearIcon} onClick={inputClear} /> : null}</span>
+			{results.length > 0 && <ul className="drop">
 				{renderDropdown()}
 			</ul>}
 		</div>

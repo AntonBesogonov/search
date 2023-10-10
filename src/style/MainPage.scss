@@ -1,0 +1,53 @@
+$drop-bg-color: white;
+$search-bg-color: rgba(0, 0, 0, 0.07);
+
+.drop {
+	box-shadow: rgba(0, 0, 0, 0.24) 0px 10px 40px;
+	border-radius: 12px;
+	background: $drop-bg-color;
+	padding: 12px 0px;
+	width: 24vw;
+	position: fixed;
+	top: 35%;
+	left: 38.5%;
+}
+
+.inputSearch {
+	position: fixed;
+	top: 30%;
+	left: 40.5%;
+	width: 19vw;
+	height: 20px;
+	background: $search-bg-color;
+	border: none;
+	text-align: center;
+	padding: 10px;
+
+	&:focus {
+		outline: none;
+	}
+}
+
+.icon {
+	position: fixed;
+	top: 30%;
+	background: $search-bg-color;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 40px;
+	height: 40px;
+	margin: 0 auto;
+	cursor: pointer;
+
+	&.search {
+		left: 38.45%;
+		border-radius: 25px 0px 0px 25px;
+	}
+
+	&.clear {
+		left: 60.5%;
+		border-radius: 0px 25px 25px 0px;
+		
+	}
+}
