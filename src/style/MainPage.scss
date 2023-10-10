@@ -1,27 +1,36 @@
-$drop-bg-color: white;
-$search-bg-color: rgba(0, 0, 0, 0.07);
+.container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
 
-.drop {
-	box-shadow: rgba(0, 0, 0, 0.24) 0px 10px 40px;
-	border-radius: 12px;
-	background: $drop-bg-color;
-	padding: 12px 0px;
-	width: 24vw;
+.searchBox {
+	display: flex;
 	position: fixed;
-	top: 35%;
-	left: 38.5%;
+	justify-content: space-between;
+	width: 23vw;
+	top: 43%;
+	background: #00000012;
+	padding: 0.5%;
+	border-radius: 25px;
+}
+
+.dropDown {
+	box-shadow: #0000003d 0px 10px 40px;
+	border-radius: 12px;
+	background: #ffffff;
+	padding: 0.5% 0%;
+	width: 24vw;
+	margin-top: 1%;
+	position: fixed;
+	top: 46%;
 }
 
 .inputSearch {
-	position: fixed;
-	top: 30%;
-	left: 40.5%;
-	width: 19vw;
-	height: 20px;
-	background: $search-bg-color;
+	flex-grow: 1;
 	border: none;
 	text-align: center;
-	padding: 10px;
+	background: rgba(0, 0, 0, -0.93);
 
 	&:focus {
 		outline: none;
@@ -29,25 +38,25 @@ $search-bg-color: rgba(0, 0, 0, 0.07);
 }
 
 .icon {
-	position: fixed;
-	top: 30%;
-	background: $search-bg-color;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	width: 40px;
-	height: 40px;
-	margin: 0 auto;
-	cursor: pointer;
+	width: 5%;
 
 	&.search {
-		left: 38.45%;
 		border-radius: 25px 0px 0px 25px;
 	}
 
 	&.clear {
-		left: 60.5%;
 		border-radius: 0px 25px 25px 0px;
-		
+		opacity: 0.8;
+		cursor: pointer;
+	}
+}
+
+.animatedIcon {
+	opacity: 0.3;
+	&.spinner{
+		height: 16px;
 	}
 }
